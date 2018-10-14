@@ -1,0 +1,83 @@
+﻿@using WebBanQuanAo.Help
+@model WebBanQuanAo.Models.Category
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_MyLayoutAdmin.cshtml";
+}
+
+@section _Header
+{
+    <!-- DataTables CSS -->
+    <link href="~/Areas/Admin/Content/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- DataTables Responsive CSS -->
+    <link href="~/Areas/Admin/Content/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+}
+    <style>
+        th, td {
+            text-align: center;
+        }
+
+            td p {
+                height: 50px;
+                overflow-y: hidden;
+                text-overflow: ellipsis;
+            }
+    </style>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-red">
+                <div class="panel-heading">
+                    Quản lý Sản phẩm
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="bs-example" style="text-align:right; padding-bottom:10px;">
+                        <div class="btn-group">
+                            @Html.DropDownListFor(model => model.id, (SelectList)ViewBag.Category, " --- Tất cả sản phẩm --- ",
+                                                                             new { @class = "form-control", @id = "Category" })
+                        </div>
+                        <div class="btn-group">
+                            @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-plus'></span> Thêm mới", "Create", "Create", "Products", routeValues: new { }, htmlAttributes: new { @class = "btn btn-primary" })
+                        </div>
+                    </div>
+                    <div id="getProduct"></div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+@section _Footer
+    {
+    <!-- DataTables JavaScript -->
+    <script src="~/Areas/Admin/Content/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/datatables-responsive/dataTables.responsive.js"></script>
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+        $(document).ready(function () {
+            function getProduct() {
+                var CategoryId = $('#Category').val();
+                $.ajax({
+                    url: '@Url.Action("getProduct","Products")',
+                    type: "GET",
+                    data: { id: CategoryId },
+                    success: function (data) {
+                        $("#getProduct").html(data);
+                    },
+                    error: function (data) {
+                        alert("something went wrong.");
+                    }
+                });
+            }
+            getProduct();
+            $("#Category").change(function () {
+                getProduct();
+            });
+           
+        });
+    </script>
+}

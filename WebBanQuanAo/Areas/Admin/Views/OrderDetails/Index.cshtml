@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebBanQuanAo.Models.OrderDetail>
+<style>
+
+    th, td {
+        text-align: center;
+    }
+
+        td p {
+            height: 50px;
+            overflow-y: hidden;
+            text-overflow: ellipsis;
+        }
+
+</style>
+        <div class="panel-body">
+            <table style="width:100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th width="50px">
+                            STT
+                        </th>
+                        <th width="200px">
+                            Tên sản phẩm
+                        </th>
+                        <th width="80px">
+                            Số lượng
+                        </th>
+                        <th width="100px">
+                            Giá
+                        </th>
+                        <th>
+                            Hình ảnh
+                        </th>
+                    </tr>
+                    </thead>
+                <tbody>
+                    @{ var Number = 1; }
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.Raw(Number++)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Product.name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Quantity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                <img src="~/Content/images/@item.Product.img" width="100" height="100" />
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            @{ string temp; temp = $"{ViewBag.TongTien:0,0}";}
+            <h4>Tổng tiền: @temp đ</h4>
+        </div>

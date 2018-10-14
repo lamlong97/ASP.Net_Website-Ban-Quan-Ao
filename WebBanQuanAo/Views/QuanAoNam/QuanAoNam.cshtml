@@ -1,0 +1,50 @@
+﻿@model IEnumerable<WebBanQuanAo.Models.Product>
+
+    <div class="container">
+        <h3 class="tittle1">Sản phẩm hot</h3>
+        <div class="slider">
+            <div class="callbacks_container">
+                <ul class="rslides" id="slider">
+                    <li>
+                        <div class="caption">
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-md-3 cap-left simpleCart_shelfItem">
+
+                                    <div class="grid-arr">
+
+                                        <div class="grid-arrival">
+                                            <figure>
+                                                <a href="/@ViewBag.meta/@item.meta/@item.id">
+                                                    <div class="grid-img" style="width:200px;height:250px;margin-left:auto;margin-right:auto;display:block">
+                                                        <img src="~/Content/images/@item.img" class="img-responsive" alt="" style="height:250px;width:200px"/>
+                                                    </div>
+                                                </a>
+                                            </figure>
+                                        </div>
+                                        <div class="block">
+                                            <div class="starbox small ghosting"> </div>
+                                        </div>
+                                        <div class="women">
+                                            <h6><a href="/@ViewBag.meta/@item.meta/@item.id">@item.name</a></h6>
+                                            @{ string temp; temp = $"{item.price:0,0}";}
+                                            <p><em class="item_price">@temp đ</em></p>
+                                            @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSP = item.id, @strURL = Request.Url.ToString() }))
+                                            {
+                                                <input type="submit" value="Thêm vào giỏ hàng" style="color:dodgerblue" id="btnGioHang" class="my-cart-b item_add" />
+
+                                            }
+                                        </div>
+
+                                    </div>
+                             
+                                </div>
+                                    
+                                
+                            }
+                            </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>

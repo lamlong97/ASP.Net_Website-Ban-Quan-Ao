@@ -1,0 +1,15 @@
+﻿@model IEnumerable<WebBanQuanAo.Models.News>
+<div class="twitter-in">
+    <h5>Tin Tức</h5>
+
+    @foreach (var i in Model)
+    {
+        <div class="up-date">
+            <p>@Html.DisplayFor(modelItem => i.name)</p>
+
+            <p class="ago">@Html.DisplayFor(modelItem => i.description)</p>
+        </div>
+    }
+    <a href="#" class="tweets">Xem thêm</a>
+    <div class="clearfix"> </div>
+</div>

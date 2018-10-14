@@ -1,0 +1,84 @@
+﻿@model List<WebBanQuanAo.Models.News>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutNguoidung.cshtml";
+}
+@*<center>
+    <div class="container">
+        <div class="article-top">
+            <br />
+
+            <h3>Tin tức - Sự kiện</h3>
+            @{
+                var i = 0;
+            }
+            @foreach (var item in Model)
+            {
+                
+                    if (i % 2 == 0)
+                    {
+
+                    <div class="article-bottom">
+                        <div class="col-md-4 article-para">
+                            <a href="single.html">
+                                <img src="/Content/upload/img/news/@item.img" alt="image" class="img-responsive zoom-img">
+                            </a>
+                        </div>
+                        <div class="col-md-8 article-head">
+                            <h2><a href="#">@item.name</a></h2>
+                            <p>@item.description</p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+               
+                }
+                else
+                    {
+                        <div class="article-bottom">
+                            <div class="col-md-8 article-head">
+                                <h6><a href="#">@item.name</a></h6>
+                                <p>@item.description</p>
+                            </div>
+                            <div class="col-md-4 article-para">
+                                <a href="single.html">
+                                    <img src="/Content/upload/img/news/@item.img" alt="image" class="img-responsive zoom-img">
+                                </a>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    }
+                i++;
+            }
+
+
+
+        </div>
+    </div>
+</center>*@
+<div style="width:100%; margin-left: 200px; ">
+    @foreach (var i in Model)
+    {
+        <div class="news" style="width:70%; height:auto;margin-left: 0px; margin-top:20px; background-color:lightyellow; border:solid 1px; ">
+
+            <div class="news_head" style="height:auto; border-bottom:solid 1px; margin-left:5px; font-size: 25px; ">
+                @*<div class="news_head_title" style="  margin-left:5px; font-size: 25px;">*@
+                <a href="/@ViewBag.meta/@i.id" target="_blank"> @i.name</a>
+                @*</div>*@
+                @*<div class="news_head_details" style="float:right; margin-right:15px;">
+                        <a href="/@ViewBag.meta/@i.id" target="_blank" > Xem thêm</a>
+                    </div>*@
+
+            </div>
+            <div class="news_body" style="height:200px; width:100%;">
+                <div class="news_body_image" style="float:left; border-right: solid 1px;width:30%; height:200px; ">
+                    <a href="/@ViewBag.meta/@i.id" target="_blank" style="width:30%; height:200px;">     <img src="~/Content/upload/img/news/@i.img" style="height:100%;" /></a>
+                </div>
+                <div class="news_body_description" style="float:left; width:67%; height: 185px; margin-left:20px; margin-top:15px;  ">
+                    @i.description
+                </div>
+            </div>
+
+        </div>
+    }
+</div>

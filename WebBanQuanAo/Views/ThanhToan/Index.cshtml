@@ -1,0 +1,106 @@
+﻿@using WebBanQuanAo.Models
+@model List<GioHang>
+@{
+    ViewBag.Title = "Thanh toán";
+    Layout = "~/Views/Shared/_LayoutThanhToan.cshtml";
+}
+<style>
+
+    th, td {
+        text-align: center;
+    }
+
+        td p {
+            height: 50px;
+            overflow-y: hidden;
+            text-overflow: ellipsis;
+        }
+
+    thead, tbody {
+        display: block;
+    }
+
+    tbody {
+        height: 400px; /* Just for the demo          */
+        overflow-y: auto; /* Trigger vertical scroll    */
+        overflow-x: hidden; /* Hide the horizontal scroll */
+    }
+</style>
+<h1>Thanh Toán</h1>
+<br />
+<div class="inline-row">
+    <div class="col-md-6">
+        @using (Html.BeginForm("ThanhToan", "ThanhToan", FormMethod.Post))
+        {
+            <p id="contact">Thông Tin Liên Hệ</p>
+            <hr id="hr" />
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Người nhận*:</label>
+                    <div class="col-sm-6">
+                        <input name="nguoinhan" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Email:</label>
+                    <div class="col-sm-6">
+                        <input name="email" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Điện thoại*:</label>
+                    <div class="col-sm-6">
+                        <input name="dienthoai" class="form-control" />
+                    </div>
+                </div>
+            <p id="contact">Địa Chỉ Giao Hàng</p>
+            <hr id="hr" />
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Địa chỉ*:</label>
+                    <div class="col-sm-9 delivery-address">
+                        <textarea name="diachi" rows="3" cols="30"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-3 col-form-label">Ghi chú:</label>
+                    <div class="col-sm-9 delivery-address">
+                        <textarea rows="3" cols="30"></textarea>
+                    </div>
+                </div>
+            <button type="submit" class="btn">Xác nhận</button>
+        }
+        </div>
+    <div class="col-md-6">
+        <div>
+            <div class="panel-body">
+                <table class="table table-bordered scroll-view1" id="dataTables-example">
+
+                    <tbody class="scroll-view">
+                        @{var rowNo = 1;
+                            double total = 0;
+                        }
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td> @Html.Raw(rowNo++)</td>
+                                <td style="text-align:left; white-space:nowrap">@item.sTenSP</td>
+                                <td><img src="~/Content/images/@item.sHinhAnh" style="width:100px;height:100px;" /></td>
+                                <td>@item.dDonGia</td>
+                                <td>@item.iSoLuong</td>
+                                <td>@item.ThanhTien</td>
+                            </tr>
+                            total += item.ThanhTien;
+                        }
+                    </tbody>
+                </table>
+                <p id="contact">Tổng</p>
+                <hr id="hr" />
+                <h4 id="border-Tong">Tổng tiền: @total</h4>
+            </div>
+            <!-- /.panel-body -->
+
+
+            <br />
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+﻿@model WebBanQuanAo.Models.Order
+
+@{
+    ViewBag.Title = "Chi tiết đơn hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_MyLayoutAdmin.cshtml";
+}
+
+<style>
+    dt{
+        padding-bottom:10px
+    }
+</style>
+<div style="height:15px"></div>
+<div class="panel panel-red">
+    <div class="panel-heading">Đơn hàng của: @Html.DisplayFor(model => model.TenKH)</div>
+    <div class="panel-body">
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+                    Tên khách hàng:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.TenKH)
+                </dd>
+
+                <dt>
+                    Điện thoại:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DienThoai)
+                </dd>
+
+                <dt>
+                    Email:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+
+                <dt>
+                    Địa chỉ:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DiaChi)
+                </dd>
+
+                <dt>
+                    Ngày lập đơn:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NgayTao)
+                </dd>
+
+                <dt>
+                    Trạng thái đơn hàng:
+                </dt>
+
+                <dd>
+                    @{ var chk = (Model.TrangThai == true) ? "Đã giao" : "Chưa giao";}
+                    @Html.DisplayFor(modelItem => chk)
+                </dd>
+
+                @Html.Action("Index", "OrderDetails", new { id = Model.ID})
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Quay về", "Index", "Index", new { @class = "btn btn-danger" })
+        </p>
+    </div>
+</div>

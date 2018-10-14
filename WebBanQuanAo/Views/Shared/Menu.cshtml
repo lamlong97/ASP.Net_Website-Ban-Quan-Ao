@@ -1,0 +1,18 @@
+﻿@model IEnumerable<WebBanQuanAo.Models.Category>
+@{
+    ViewBag.Title = "Menu";
+}
+
+
+@foreach (var i in Model)
+{
+    <div class="new-arrivals-w3agile">
+        <div class="container">
+
+            <h3><a href="/@i.id/">@i.name</a></h3>
+        </div>
+        <div>
+            @Html.ActionLink(i.name,"getProduct", "Default", new { id = @i.id },null)
+        </div>
+    </div>
+}

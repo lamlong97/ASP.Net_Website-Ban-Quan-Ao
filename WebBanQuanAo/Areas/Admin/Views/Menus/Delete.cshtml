@@ -1,0 +1,81 @@
+﻿@model WebBanQuanAo.Models.Menu
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_MyLayoutAdmin.cshtml";
+}
+<style>
+    dt {
+        padding-top: 10px;
+    }
+
+    dd {
+        padding-top: 10px;
+    }
+
+    p {
+        height: 100px;
+        margin: 20px;
+        display: inline;
+    }
+</style>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Chi Tiết Tin Tức
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <h4>Bạn Có Muốn Xoá Không ?</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        Tên
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.name)
+                    </dd>
+                    <dt>
+                        Đường Dẫn
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.link)
+                    </dd>
+                    <dt>
+                        Meta
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.meta)
+                    </dd>
+                    <dt>
+                        Hiển Thị
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.hide)
+                    </dd>
+                    <dt>
+                        Sắp Xếp
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.order)
+                    </dd>
+                    <dt>
+                        Ngày Bắt Đầu
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.datebegin)
+                    </dd>
+                </dl>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" class="btn btn-default" /> |
+                        @Html.ActionLink("Quay Lại Danh Sách", "Index")
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

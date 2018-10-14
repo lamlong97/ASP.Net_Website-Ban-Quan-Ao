@@ -1,0 +1,10 @@
+﻿@model IEnumerable<WebBanQuanAo.Models.Menu>
+
+<span class="menu"> </span>
+
+<ul class="nav navbar-nav">
+    @foreach (var i in Model)
+    {
+        <li><a href="/@i.meta"> @i.name</a></li>
+    }
+</ul>

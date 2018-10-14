@@ -1,0 +1,54 @@
+﻿
+@model List<WebBanQuanAo.Models.Product>
+@{
+    ViewBag.Title = "Category";
+    ViewBag.Heading = "Danh Sach Cac San Pham";
+    Layout = "~/Views/Shared/_LayoutNguoidung.cshtml";
+}
+@model IEnumerable<WebBanQuanAo.Models.Product>
+
+<div class="container">
+    <div class="slider">
+        <div class="callbacks_container">
+            <ul class="rslides" id="slider">
+                <li>
+                    <div class="caption">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-md-3 cap-left simpleCart_shelfItem">
+
+                                <div class="grid-arr">
+
+                                    <div class="grid-arrival">
+                                        <figure>
+                                            <a href="/@ViewBag.meta/@item.meta/@item.id">
+                                                <div class="grid-img">
+                                                    <img src="~/Content/images/@item.img" class="img-responsive" alt="" width="150" height="150" />
+                                                </div>
+                                            </a>
+                                        </figure>
+                                    </div>
+                                    <div class="block">
+                                        <div class="starbox small ghosting"> </div>
+                                    </div>
+                                    <div class="women">
+                                        <h6><a href="/@ViewBag.meta/@item.meta/@item.id">@item.name</a></h6>
+
+                                        <p><em class="item_price">@item.price VNĐ</em></p>
+                                        @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSP = item.id, @strURL = Request.Url.ToString() }))
+                                        {
+                                            <input type="submit" value="Thêm vào giỏ hàng" style="color:dodgerblue" id="btnGioHang" class="my-cart-b item_add" />
+
+                                        }
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,87 @@
+﻿@model WebBanQuanAo.Models.Feedback2
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_MyLayoutAdmin.cshtml";
+}
+<style>
+    dt {
+        padding-top: 10px;
+    }
+
+    dd {
+        padding-top: 10px;
+    }
+
+    p {
+        height: 100px;
+        margin: 20px;
+        display: inline;
+    }
+</style>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Chi Tiết Tin Tức
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <h4>Bạn Có Muốn Xoá Không ?</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        Tiêu Đề
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+                    <dt>
+                        Số Điện Thoại
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Phone)
+                    </dd>
+                    <dt>
+                        Email
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+                    <dt>
+                        Địa Chỉ
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Address)
+                    </dd>
+                    <dt>
+                        Nội Dung
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Content)
+                    </dd>
+                    <dt>
+                        Ngày Lập
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.CreatedDate)
+                    </dd>
+                    <dt>
+                        Trạng Thái
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Status)
+                    </dd>
+                </dl>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" class="btn btn-default" /> |
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

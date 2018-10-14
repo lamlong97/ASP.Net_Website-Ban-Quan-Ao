@@ -1,0 +1,161 @@
+﻿@model WebBanQuanAo.Models.Product
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_MyLayoutAdmin.cshtml";
+}
+<style>
+    dt {
+        padding-top: 10px;
+    }
+
+    dd {
+        padding-top: 10px;
+    }
+
+    p {
+        height: 100px;
+        margin: 20px;
+        display: inline;
+    }
+
+    .sua {
+        height: 30px;
+        width: 40px;
+        text-align: center;
+        background-color: deeppink;
+        display: inline;
+        padding: 10px;
+        position: relative;
+        top: -20px;
+    }
+
+        .sua:hover {
+            background-color: lightgray;
+            color: black;
+        }
+
+        .sua a {
+            padding-top: 5px;
+            color: white;
+        }
+
+    .quayve {
+        height: 30px;
+        width: 40px;
+        text-align: center;
+        background-color: deeppink;
+        display: inline;
+        padding: 10px;
+        position: relative;
+        top: -20px;
+    }
+
+        .quayve:hover {
+            transition: .4s;
+            background-color: lightgray;
+            color: black;
+        }
+
+        .quayve a {
+            padding-top: 5px;
+            color: white;
+        }
+
+    .abc {
+        display: inline;
+        position: relative;
+        top: -18px;
+        font-size: 30px;
+    }
+</style>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Chi Tiết Sản Phẩm
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <dl class="dl-horizontal">
+                    <dt>
+                        Tên Sản Phẩm
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.name)
+                    </dd>
+                    <dt>
+                        Giá
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.price)
+                    </dd>
+                    <dt>
+                        Hình Ảnh
+                    </dt>
+                    <dd>
+                        <img src="~/Content/images/@Model.img" style="width:20% ; height:auto" />
+                    </dd>
+                    <dt>
+                        Mô Tả
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.description)
+                    </dd>
+                    <dt>
+                        Meta
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.meta)
+                    </dd>
+                    <dt>
+                        Kích Cỡ
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.size)
+                    </dd>
+                    <dt>
+                        Màu Sắc
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.color)
+                    </dd>
+                    <dt>
+                        Hiển Thị
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.hide)
+                    </dd>
+                    <dt>
+                        Sắp Xếp
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.order)
+                    </dd>
+                    <dt>
+                        Ngày Bắt Đầu
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.datebegin)
+                    </dd>
+                    <dt>
+                        Danh Mục
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.categoryid)
+                    </dd>
+                </dl>
+            </div>
+            <p>
+                <div class="sua">
+                    @Html.ActionLink("Sửa", "Edit", new { id = Model.id })
+                </div>
+                <div class="abc">
+                    |
+                </div>
+                <div class="quayve">
+                    @Html.ActionLink("Quay Lại", "Index")
+                </div>
+            </p>
+        </div>
+    </div>
+</div>

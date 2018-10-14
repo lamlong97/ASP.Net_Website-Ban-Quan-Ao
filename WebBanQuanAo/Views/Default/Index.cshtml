@@ -1,0 +1,21 @@
+﻿@model List<WebBanQuanAo.Models.Product>
+@{
+    Layout = "~/Views/Shared/_LayoutNguoidung.cshtml";
+}
+
+@*<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Trang Chủ</title>
+</head>
+<body>*@
+
+    @*@{ Html.RenderAction("getBanner", "Default");}*@
+
+
+        @{Html.RenderAction("QuanAoNam", "QuanAoNam"); }
+        <div class="clear"></div>
+        @{Html.RenderAction("QuanAoNu", "QuanAoNu"); }
+        <div class="clear"></div>
